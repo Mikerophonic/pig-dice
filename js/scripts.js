@@ -6,6 +6,7 @@ function rollDice() {
     let rollNumber = Math.floor(Math.random() * 6 + 1);
     const currentPlayer = getCurrentPlayer();
     currentPlayer.roundScore = addScore(rollNumber);
+    return rollNumber;
 }
 
 
@@ -28,12 +29,11 @@ function hold() {
 }
 
 function nextTurn() {
-    game.round++
-    
+    game.round++;
 }
 
 function getCurrentPlayer() {
-    const currentPlayerId = (game.round - 1) % Object.keys(game.players).length;
+    const currentPlayerId = (game.round - 1) % Object.keys(game.players).length + 1;
     return game.players[currentPlayerId];
 }
 
