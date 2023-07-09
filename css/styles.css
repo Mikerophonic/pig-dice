@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: antiquewhite;
+  background-color: #2b2b2b;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin: 1rem;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  border-radius: 10px;
+}
+
+.player {
+    background-color: #151515;
+    width: 60%;
+    margin: 1rem;
+    padding: 1rem;
+    overflow-wrap: break-word;
+    border-radius: 10px;
+
+}
+
+#player1 {
+  border: 5px solid red;
+}
+
+#player2 {
+  border: 5px solid red;
+}
