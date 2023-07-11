@@ -5,7 +5,34 @@ body {
   align-items: center;
   color: antiquewhite;
   background-color: #2b2b2b;
+  padding: 20px;
 }
+
+h1 {
+    
+}
+
+.button {
+    border-radius: 10px;
+}
+
+#startBtn {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+
+#rollBtn, #holdBtn {
+    padding: 10px 20px;
+    font-size: 26px;
+    transition: all 0.2s ease-in-out;
+    }
+
+    #rollBtn:hover, #holdBtn:hover {
+    transform: scale(1.1);
+    }
+
+
 
 .wrapper {
   display: flex;
@@ -27,14 +54,7 @@ body {
 
 }
 
-#player1 {
-  border: 5px solid red;
-}
 
-#player2 {
-  border: 5px solid red;
-}
-
-.hidden {
-    display: none;
+.activePlayer {
+    border: 5px solid red;
 }
