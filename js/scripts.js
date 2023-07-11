@@ -97,9 +97,6 @@ window.addEventListener("load", function () {
     rollBtn.addEventListener('click', function() {
         rollBtn.textContent = 'Roll Again';
       });
-      rollBtn.addEventListener('mouseover', function() {
-        rollBtn.setattribute = ("style", "font-size: 32px");
-      });
     holdBtn.addEventListener("click", function() {
       hold();
       updateUI();
@@ -109,17 +106,17 @@ window.addEventListener("load", function () {
     function updateUI() {
     totalScore1Span.innerText = player1.totalScore;
     totalScore2Span.innerText = player2.totalScore;
-    roundScore1Span.innerText = player1.roundScore;
-    roundScore2Span.innerText = player2.roundScore;
+    roundScore1Span.innerText = "(+" + player1.roundScore + ")";
+    roundScore2Span.innerText = "(+" + player2.roundScore + ")";
     let cPlayer = getCurrentPlayer().id;
 
     if (cPlayer === 1) {
     document.getElementById(1).setAttribute("class", "player activePlayer");
-    document.getElementById(2).removeAttribute("class", "activePlayer")
+    document.getElementById(2).removeAttribute("class")
     document.getElementById(2).setAttribute("class", "player");
     } else {
       document.getElementById(2).setAttribute("class", "player activePlayer");
-      document.getElementById(1).removeAttribute("class", "activePlayer")
+      document.getElementById(1).removeAttribute("class")
       document.getElementById(1).setAttribute("class", "player");
     }
     

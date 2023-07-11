@@ -14,6 +14,7 @@ h1 {
 
 .button {
     border-radius: 10px;
+    margin:10px;
 }
 
 #startBtn {
@@ -28,7 +29,7 @@ h1 {
     transition: all 0.2s ease-in-out;
     }
 
-    #rollBtn:hover, #holdBtn:hover {
+#rollBtn:hover, #holdBtn:hover {
     transform: scale(1.1);
     }
 
@@ -58,3 +59,12 @@ h1 {
 .activePlayer {
     border: 5px solid red;
 }
+
+#totalScore1, #totalScore2 {
+    font-size: 32px;
+}
+
+#roundScore1, #roundScore2 {
+    font-size: 24px;
+}
+
