@@ -1,4 +1,4 @@
-body {
+body, #buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,6 +6,7 @@ body {
   color: antiquewhite;
   background-color: #2b2b2b;
   padding: 20px;
+  /* box-sizing: border-box; */
 }
 
 h1 {
@@ -62,9 +63,17 @@ h1 {
 
 #totalScore1, #totalScore2 {
     font-size: 32px;
+
 }
 
 #roundScore1, #roundScore2 {
     font-size: 24px;
 }
 
+#hidden {
+    display: none;
+  }
+
+  #rollNumber {
+    font-size: 42px;
+  }

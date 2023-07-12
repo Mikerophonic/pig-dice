@@ -1,12 +1,13 @@
-let roundScore = 0;
-let totalScore = 0;
-let breakPoints = 100;
+
+
 
 function rollDice() {
     let rollNumber = Math.floor(Math.random() * 6 + 1);
-    const currentPlayer = getCurrentPlayer();
+    let currentPlayer = getCurrentPlayer();
     roundScore = addScore(rollNumber, currentPlayer);
     checkWin(currentPlayer);
+    displayRollNumber(rollNumber)
+    showWinner()
     console.log(rollNumber);
     return rollNumber;
 }
@@ -22,15 +23,17 @@ function addScore(number, currentPlayer) {
 }
 
 function hold() {
-    const currentPlayer = getCurrentPlayer();
-    currentPlayer.totalScore += roundScore;
+    let currentPlayer = getCurrentPlayer();
+    currentPlayer.totalScore += currentPlayer.roundScore;
     checkWin(currentPlayer);
+    showWinner();
     currentPlayer.roundScore = 0;
     nextTurn();
 }
 
 function nextTurn() {
-    game.round++;
+    clearDisplay();
+    game.round++;   
 }
 
 function getCurrentPlayer() {
@@ -57,21 +60,29 @@ class Game {
 }
 
 class Player {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.roundScore = 0;
         this.totalScore = 0;
     }
 }
 
+
+
+let breakPoints = 20;
 function checkWin(currentPlayer) {
-    if (breakPoints <= currentPlayer.totalScore || breakPoints <= currentPlayer.totalScore + currentPlayer.roundScore) {
-        console.log("Winner");
+    if (currentPlayer.totalScore >= breakPoints) {
+        console.log(`${currentPlayer.name} is the Winner`);
+        return true
+    } else {
+        console.log("still in play")
+        return false
     }
 }
 
 const game = new Game();
-const player1 = new Player();
-const player2 = new Player();
+const player1 = new Player("Player One");
+const player2 = new Player("Player Two");
 game.addPlayer(player1);
 game.addPlayer(player2);
 
@@ -81,7 +92,7 @@ game.addPlayer(player2);
 
 
 window.addEventListener("load", function () {
-    const rollAgainBtn = document.getElementById("rollBtn");
+    const rollBtn = document.getElementById("rollBtn");
     const holdBtn = document.getElementById("holdBtn");
     const startBtn = document.getElementById("startBtn");
     const totalScore1Span = document.getElementById("totalScore1");
@@ -90,6 +101,7 @@ window.addEventListener("load", function () {
     const roundScore2Span = document.getElementById("roundScore2");
     const player1Div = document.getElementById("1")
     const player2Div = document.getElementById("2")
+
     rollBtn.addEventListener("click", function() {
       rollDice();
       updateUI();
@@ -101,26 +113,51 @@ window.addEventListener("load", function () {
       hold();
       updateUI();
     });
-   
+    startBtn.addEventListener("click", function(){
+      location.reload()
+    })
 
     function updateUI() {
-    totalScore1Span.innerText = player1.totalScore;
-    totalScore2Span.innerText = player2.totalScore;
-    roundScore1Span.innerText = "(+" + player1.roundScore + ")";
-    roundScore2Span.innerText = "(+" + player2.roundScore + ")";
-    let cPlayer = getCurrentPlayer().id;
+      totalScore1Span.innerText = player1.totalScore;
+      totalScore2Span.innerText = player2.totalScore;
+      roundScore1Span.innerText = "(+" + player1.roundScore + ")";
+      roundScore2Span.innerText = "(+" + player2.roundScore + ")";
+      let cPlayer = getCurrentPlayer().id;
+      if (cPlayer === 1) {
+      document.getElementById(1).setAttribute("class", "player activePlayer");
+      document.getElementById(2).removeAttribute("class")
+      document.getElementById(2).setAttribute("class", "player");
+      } else {
+        document.getElementById(2).setAttribute("class", "player activePlayer");
+        document.getElementById(1).removeAttribute("class")
+        document.getElementById(1).setAttribute("class", "player");
+      }
 
-    if (cPlayer === 1) {
-    document.getElementById(1).setAttribute("class", "player activePlayer");
-    document.getElementById(2).removeAttribute("class")
-    document.getElementById(2).setAttribute("class", "player");
-    } else {
-      document.getElementById(2).setAttribute("class", "player activePlayer");
-      document.getElementById(1).removeAttribute("class")
-      document.getElementById(1).setAttribute("class", "player");
-    }
-    
     }
 });
 
+   
+function showWinner() {
+    let currentPlayer = getCurrentPlayer();
+    if (checkWin(currentPlayer) === true) {
+    document.getElementById("buttons").setAttribute("id", "hidden");
+    const winnerH2 = document.createElement("h2");
+    winnerH2.innerHTML = `${currentPlayer.name} wins!`;
+    document.body.appendChild(winnerH2);
+    
+    }
+}
+
+function displayRollNumber(rollNumber) {
+    const rollNumberDisplay = document.getElementById("rollNumber");
+    rollNumberDisplay.textContent = `${rollNumber}`;
+}
+
+function clearDisplay() {
+    const rollNumberDisplay = document.getElementById("rollNumber");
+    rollNumberDisplay.innerHTML = "&nbsp";
+    const rollBtn = document.getElementById("rollBtn");
+    rollBtn.textContent = "Roll"
+
+}
 
