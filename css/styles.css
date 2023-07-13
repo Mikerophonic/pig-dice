@@ -19,7 +19,7 @@ h1 {
 }
 
 #startBtn {
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 18px;
 }
 
@@ -34,21 +34,27 @@ h1 {
     transform: scale(1.1);
     }
 
-
+.dice {
+    text-align: center;
+    font-size: 100px;
+}
 
 .wrapper {
   display: flex;
   flex-direction: row;
-  width: 60%;
-  margin: 1rem;
+  width: 50%;
+  /* margin: 1rem; */
   padding: 1rem;
   overflow-wrap: break-word;
   border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .player {
     background-color: #151515;
-    width: 60%;
+    width: 50%;
     margin: 1rem;
     padding: 1rem;
     overflow-wrap: break-word;
@@ -64,6 +70,7 @@ h1 {
 #totalScore1, #totalScore2 {
     font-size: 32px;
 
+
 }
 
 #roundScore1, #roundScore2 {
@@ -75,5 +82,5 @@ h1 {
   }
 
   #rollNumber {
-    font-size: 42px;
+    font-size: 62px;
   }

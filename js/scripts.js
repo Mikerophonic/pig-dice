@@ -25,14 +25,11 @@ function addScore(number, currentPlayer) {
 function hold() {
     let currentPlayer = getCurrentPlayer();
     currentPlayer.totalScore += currentPlayer.roundScore;
-    checkWin(currentPlayer);
-    showWinner();
     currentPlayer.roundScore = 0;
     nextTurn();
 }
 
 function nextTurn() {
-    clearDisplay();
     game.round++;   
 }
 
@@ -71,7 +68,8 @@ class Player {
 
 let breakPoints = 20;
 function checkWin(currentPlayer) {
-    if (currentPlayer.totalScore >= breakPoints) {
+    let bothScores = currentPlayer.totalScore + currentPlayer.roundScore
+    if (currentPlayer.totalScore >= breakPoints || bothScores >= breakPoints) {
         console.log(`${currentPlayer.name} is the Winner`);
         return true
     } else {
@@ -80,14 +78,15 @@ function checkWin(currentPlayer) {
     }
 }
 
+
 const game = new Game();
 const player1 = new Player("Player One");
 const player2 = new Player("Player Two");
 game.addPlayer(player1);
 game.addPlayer(player2);
 
-
 //UI Logic
+
 
 
 
@@ -106,9 +105,6 @@ window.addEventListener("load", function () {
       rollDice();
       updateUI();
     });
-    rollBtn.addEventListener('click', function() {
-        rollBtn.textContent = 'Roll Again';
-      });
     holdBtn.addEventListener("click", function() {
       hold();
       updateUI();
@@ -124,9 +120,9 @@ window.addEventListener("load", function () {
       roundScore2Span.innerText = "(+" + player2.roundScore + ")";
       let cPlayer = getCurrentPlayer().id;
       if (cPlayer === 1) {
-      document.getElementById(1).setAttribute("class", "player activePlayer");
-      document.getElementById(2).removeAttribute("class")
-      document.getElementById(2).setAttribute("class", "player");
+        document.getElementById(1).setAttribute("class", "player activePlayer");
+        document.getElementById(2).removeAttribute("class")
+        document.getElementById(2).setAttribute("class", "player");
       } else {
         document.getElementById(2).setAttribute("class", "player activePlayer");
         document.getElementById(1).removeAttribute("class")
@@ -139,25 +135,61 @@ window.addEventListener("load", function () {
    
 function showWinner() {
     let currentPlayer = getCurrentPlayer();
-    if (checkWin(currentPlayer) === true) {
-    document.getElementById("buttons").setAttribute("id", "hidden");
-    const winnerH2 = document.createElement("h2");
-    winnerH2.innerHTML = `${currentPlayer.name} wins!`;
-    document.body.appendChild(winnerH2);
-    
+    if (checkWin(currentPlayer) === true ) {
+        document.getElementById("buttons").setAttribute("id", "hidden");
+        const winnerH2 = document.createElement("h2");
+        winnerH2.innerHTML = `${currentPlayer.name} wins!`;
+        document.body.appendChild(winnerH2);
+        if (currentPlayer.id === 1) {
+            document.getElementById("2").remove();
+        } else 
+            {
+            document.getElementById("1").remove();
+        }
+        return true
     }
 }
 
 function displayRollNumber(rollNumber) {
-    const rollNumberDisplay = document.getElementById("rollNumber");
-    rollNumberDisplay.textContent = `${rollNumber}`;
+    const rollNumber1Display = document.getElementById("rollNumber1");
+    const rollNumber2Display = document.getElementById("rollNumber2");
+    let currentPlayer = getCurrentPlayer();
+
+    if (rollNumber === 1) {
+        if (currentPlayer.id === 1) {
+            rollNumber2Display.textContent = "⚀";
+        } else {
+            rollNumber1Display.textContent = "⚀";
+            }
+    } if (rollNumber === 2) {
+        if (currentPlayer.id === 1) {
+            rollNumber1Display.textContent = "⚁";
+        } else {
+            rollNumber2Display.textContent = "⚁";
+            }
+    } if (rollNumber === 3) {
+        if (currentPlayer.id === 1) {
+            rollNumber1Display.textContent = "⚂";
+        } else {
+            rollNumber2Display.textContent = "⚂";
+            }
+    } if (rollNumber === 4) {
+        if (currentPlayer.id === 1) {
+            rollNumber1Display.textContent = "⚃";
+        } else {
+            rollNumber2Display.textContent = "⚃";
+            }
+    } if (rollNumber === 5) {
+        if (currentPlayer.id === 1) {
+            rollNumber1Display.textContent = " ⚄";
+        } else {
+            rollNumber2Display.textContent = "⚄";
+            }
+    } if (rollNumber === 6) {
+        if (currentPlayer.id === 1) {
+            rollNumber1Display.textContent = "⚅";
+        } else {
+            rollNumber2Display.textContent = " ⚅";
+            }
+    }
 }
-
-function clearDisplay() {
-    const rollNumberDisplay = document.getElementById("rollNumber");
-    rollNumberDisplay.innerHTML = "&nbsp";
-    const rollBtn = document.getElementById("rollBtn");
-    rollBtn.textContent = "Roll"
-
-}
-
