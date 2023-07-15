@@ -66,7 +66,7 @@ class Player {
 
 
 
-let breakPoints = 20;
+let breakPoints = 100;
 function checkWin(currentPlayer) {
     let bothScores = currentPlayer.totalScore + currentPlayer.roundScore
     if (currentPlayer.totalScore >= breakPoints || bothScores >= breakPoints) {
@@ -123,10 +123,12 @@ window.addEventListener("load", function () {
         document.getElementById(1).setAttribute("class", "player activePlayer");
         document.getElementById(2).removeAttribute("class")
         document.getElementById(2).setAttribute("class", "player");
+        document.getElementById("rollNumber2").innerHTML = "&nbsp"
       } else {
         document.getElementById(2).setAttribute("class", "player activePlayer");
         document.getElementById(1).removeAttribute("class")
         document.getElementById(1).setAttribute("class", "player");
+        document.getElementById("rollNumber1").innerHTML = "&nbsp"
       }
 
     }
@@ -193,3 +195,6 @@ function displayRollNumber(rollNumber) {
             }
     }
 }
+
+
+// ⚀ ⚁ ⚂ ⚃ ⚄ ⚅

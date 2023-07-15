@@ -36,29 +36,30 @@ h1 {
 
 .dice {
     text-align: center;
-    font-size: 100px;
+    font-size: 80px;
+    padding: 0;
 }
 
 .wrapper {
   display: flex;
   flex-direction: row;
-  width: 50%;
-  /* margin: 1rem; */
+  width: 55%;
   padding: 1rem;
   overflow-wrap: break-word;
   border-radius: 10px;
   align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
 .player {
     background-color: #151515;
-    width: 50%;
+    width: 60%;
     margin: 1rem;
     padding: 1rem;
     overflow-wrap: break-word;
     border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
 
 }
 
@@ -81,6 +82,7 @@ h1 {
     display: none;
   }
 
-  #rollNumber {
+#rollNumber {
     font-size: 62px;
   }
+
