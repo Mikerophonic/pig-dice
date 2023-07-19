@@ -1,0 +1,85 @@
+body, #buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: antiquewhite;
+  background-color: #2b2b2b;
+  padding: 20px;
+  /* box-sizing: border-box; */
+}
+
+
+.button {
+    border-radius: 10px;
+    margin:10px;
+}
+
+#startBtn {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+
+#rollBtn, #holdBtn {
+    padding: 10px 20px;
+    font-size: 26px;
+    transition: all 0.2s ease-in-out;
+    }
+
+#rollBtn:hover, #holdBtn:hover {
+    transform: scale(1.1);
+    }
+
+.dice {
+    text-align: center;
+    font-size: 80px;
+    padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 55%;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.player {
+    background-color: #151515;
+    width: 60%;
+    margin: 1rem;
+    padding: 1rem;
+    overflow-wrap: break-word;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+
+.activePlayer {
+    border: 5px solid red;
+}
+
+#totalScore1, #totalScore2 {
+    font-size: 32px;
+
+
+}
+
+#roundScore1, #roundScore2 {
+    font-size: 24px;
+}
+
+#hidden {
+    display: none;
+  }
+
+#rollNumber {
+    font-size: 62px;
+  }
+
