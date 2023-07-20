@@ -20,8 +20,6 @@ export class Game {
     let currentPlayer = this.getCurrentPlayer();
     let roundScore = this.addScore(rollNumber, currentPlayer);
     this.checkWin(currentPlayer);
-    // displayRollNumber(rollNumber);
-    // showWinner();
     return rollNumber;
   }
 
